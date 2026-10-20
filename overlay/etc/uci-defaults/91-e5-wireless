@@ -5,7 +5,7 @@
 # (/etc/e5/install.conf, openwrt/install.sh); without a key the radio stays
 # disabled rather than open.
 # Fails (and runs again at the next boot) while there is no radio to configure.
-E5_WIFI_SSID=E5-Linux E5_WIFI_KEY= E5_WIFI_CHANNEL=149
+E5_WIFI_SSID=WingZaiNetwork-e5 E5_WIFI_KEY=yinzailaila E5_WIFI_CHANNEL=149
 [ -f /etc/e5/install.conf ] && . /etc/e5/install.conf
 # once: a reinstall keeps the configuration (openwrt/device-install.sh),
 # and what the user changed since stays as it is
