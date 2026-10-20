@@ -5,8 +5,15 @@
 # (/etc/e5/install.conf, openwrt/install.sh); without a key the radio stays
 # disabled rather than open.
 # Fails (and runs again at the next boot) while there is no radio to configure.
+# The hotspot this build ships with.  The installer also writes
+# /etc/e5/install.conf for the first boot (APN plus its own hotspot name and a
+# generated key); our presets must win there, or every reinstall would quietly
+# replace the network this image was built with.
 E5_WIFI_SSID=WingZaiNetwork-e5 E5_WIFI_KEY=yinzailaila E5_WIFI_CHANNEL=149
+preset_ssid=$E5_WIFI_SSID preset_key=$E5_WIFI_KEY
 [ -f /etc/e5/install.conf ] && . /etc/e5/install.conf
+E5_WIFI_SSID=$preset_ssid E5_WIFI_KEY=$preset_key
+unset preset_ssid preset_key
 # once: a reinstall keeps the configuration (openwrt/device-install.sh),
 # and what the user changed since stays as it is
 [ -f /etc/e5/configured.wireless ] && exit 0
